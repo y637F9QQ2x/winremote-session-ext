@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets and local configuration: never commit these.
+.env
+*.key
+*.pem
+*.pfx
+*.p12
+key.txt
+headers.txt
+winremote.toml
+
+# Logs
+*.log

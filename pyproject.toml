@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "winremote-session-ext"
+version = "0.1.0"
+description = "Session-aware tools and HTTP hardening for winremote-mcp (extension, requires upstream)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "Kazuma Matsumoto" }]
+# fastmcp 4.2.1 and starlette 1.10.0, the versions the tests ran with, need 3.11.
+requires-python = ">=3.11"
+# winremote-mcp is pinned exactly: the extension refuses to start on any other
+# release. click, starlette and python-dotenv are imported directly; the
+# minimum versions are the ones winremote-mcp 0.4.24 declares.
+dependencies = [
+    "winremote-mcp==0.4.24",
+    "click>=8.0.0",
+    "starlette>=1.3.1",
+    "python-dotenv>=1.0.0",
+]
+classifiers = [
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.urls]
+Repository = "https://github.com/y637F9QQ2x/winremote-session-ext"
+Upstream = "https://github.com/dddabtc/winremote-mcp"
+
+[project.scripts]
+winremote-session-ext = "winremote_session_ext.launcher:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "UP", "S"]
+# S101: pytest uses assert. S603: subprocess calls take fixed argument lists.
+ignore = ["S101", "S603"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S104"]

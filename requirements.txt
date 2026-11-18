@@ -1,0 +1,5 @@
+# The upstream release this extension was checked against. The extension
+# refuses to start on any other winremote-mcp version, and also when an
+# upstream file it relies on differs from that release. Change the pin only
+# together with extension.UPSTREAM_FILES_SHA256 and policy.SUPPORTED_UPSTREAM.
+winremote-mcp==0.4.24

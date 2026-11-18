@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "winremote-session-ext": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "mcp-remote@0.16.6",
+        "http://127.0.0.1:8090/mcp",
+        "--header-file",
+        "C:\\Users\\<you>\\.winremote\\headers.txt"
+      ]
+    }
+  }
+}
